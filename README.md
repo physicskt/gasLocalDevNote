@@ -1,59 +1,61 @@
 # gasLocalDevNote
+詳細なドキュメントや説明書は以下参照\
+https://github.com/google/clasp
 
-## Google�A�J�E���g��clasp�Ƀ��O�C��
-���̃R�}���h�����s���āAGoogle�A�J�E���g��clasp�Ƀ��O�C�����܂��B
+## Googleアカウントでclaspにログイン
+次のコマンドを実行して、Googleアカウントでclaspにログインします。
 ```
 clasp login
 ```
 
-## PJ�̃t�H���_�Ɉړ�
+## PJのフォルダに移動
 
-## �悭�g�� clasp �R�}���h�܂Ƃ�
-| �R�}���h                                   | ����                                               |
+## よく使う clasp コマンドまとめ
+| コマンド                                   | 説明                                               |
 |--------------------------------------------|----------------------------------------------------|
-| `clasp login`                              | Google�A�J�E���g�Ń��O�C��                         |
-| `clasp logout`                             | ���O�A�E�g                                          |
-| `clasp create --title "�^�C�g��"`           | �V����GAS�v���W�F�N�g���쐬                        |
-| `clasp clone {�X�N���v�gID}`                | �����v���W�F�N�g���N���[��                          |
-| `clasp push`                               | ���[�J���̕ύX��GAS�ɃA�b�v���[�h                   |
-| `clasp pull`                               | GAS���̍ŐV�R�[�h���擾                             |
-| `clasp open`                               | GAS��Web UI���u���E�U�ŊJ��                         |
-| `clasp deployments`                        | �f�v���C�ς݈ꗗ���m�F                              |
-| `clasp deploy --description "����"`         | �V�o�[�W�������쐬���ăf�v���C                      |
-| `clasp version`                            | �o�[�W���������쐬�i�f�v���C�Ȃ��j                  |
-| `clasp undeploy {�f�v���CID}`               | �f�v���C������                                      |
-| `clasp list`                               | ���L���Ă���v���W�F�N�g�ꗗ��\��                   |
-| `clasp status`                             | ���[�J����GAS�̍������m�F                           |
-| `clasp logs`                               | ���s���O��\��                                      |
-| `clasp run {�֐���}`                        | �w�肵���֐������s                                  |
+| `clasp login`                              | Googleアカウントでログイン                         |
+| `clasp logout`                             | ログアウト                                          |
+| `clasp create --title "タイトル"`           | 新しいGASプロジェクトを作成                        |
+| `clasp clone {スクリプトID}`                | 既存プロジェクトをクローン                          |
+| `clasp push`                               | ローカルの変更をGASにアップロード                   |
+| `clasp pull`                               | GAS側の最新コードを取得                             |
+| `clasp open`                               | GASのWeb UIをブラウザで開く                         |
+| `clasp deployments`                        | デプロイ済み一覧を確認                              |
+| `clasp deploy --description "説明"`         | 新バージョンを作成してデプロイ                      |
+| `clasp version`                            | バージョンだけ作成（デプロイなし）                  |
+| `clasp undeploy {デプロイID}`               | デプロイを解除                                      |
+| `clasp list`                               | 所有しているプロジェクト一覧を表示                   |
+| `clasp status`                             | ローカルとGASの差分を確認                           |
+| `clasp logs`                               | 実行ログを表示                                      |
+| `clasp run {関数名}`                        | 指定した関数を実行                                  |
 
-## GAS�v���W�F�N�g�̃N���[��
-�����̃v���W�F�N�g��ҏW����ꍇ�́A�v���W�F�N�g�̃X�N���v�gID���g�p���ăN���[�����܂��B
-�X�N���v�gID�́AApps Script�G�f�B�^�́u�v���W�F�N�g�ݒ�v����m�F�ł��܂��B
+## GASプロジェクトのクローン
+既存のプロジェクトを編集する場合は、プロジェクトのスクリプトIDを使用してクローンします。
+スクリプトIDは、Apps Scriptエディタの「プロジェクト設定」から確認できます。
 ```
-clasp clone {�X�N���v�gID}
+clasp clone {スクリプトID}
 ```
 
-## �ύX�̃v�b�V��
-�X�N���v�g�ɉ������ύX��Google Apps Script�ɔ��f������ɂ́A�ȉ��̃R�}���h���g�p���܂��B
+## 変更のプッシュ
+スクリプトに加えた変更をGoogle Apps Scriptに反映させるには、以下のコマンドを使用します。
 ```
 clasp push
 ```
 
-## ����f�v���C�i�o�[�W�����쐬 + �f�v���C�j
+## 初回デプロイ（バージョン作成 + デプロイ）
 ```
-clasp deploy --description "����f�v���C"
-```
-
-## 2��ڈȍ~�̍X�V�i�ăf�v���C�j
-```
-clasp deploy --description "�C�����e�̐���"
-```
-```
-clasp deploy --description "v1"  # �f�v���C���ăo�[�W�����쐬
+clasp deploy --description "初回デプロイ"
 ```
 
-## ���JURL�̊m�F�iWeb�A�v���̏ꍇ�j
+## 2回目以降の更新（再デプロイ）
+```
+clasp deploy --description "修正内容の説明"
+```
+```
+clasp deploy --description "v1"  # デプロイしてバージョン作成
+```
+
+## 公開URLの確認（Webアプリの場合）
 ```
 clasp deployments
 ```
